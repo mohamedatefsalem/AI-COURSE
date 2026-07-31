@@ -286,8 +286,8 @@
       </div>
 
       <div data-reveal style="position:relative;width:100%;max-width:480px;margin:0 auto;aspect-ratio:4/5;border:1px solid rgba(255,255,255,0.12);border-radius:8px;overflow:hidden;background:#111;box-shadow:0 24px 60px rgba(0,0,0,0.5)">
-        <img src="uploads/01_BASE.jpg" alt="3D viewport screenshot, before" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-        <img src="uploads/01.jpg" alt="AI render, after" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:baReveal 7.5s ease-in-out infinite">
+        <img src="assets/01_BASE.jpg" alt="3D viewport screenshot, before" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <img src="assets/01.jpg" alt="AI render, after" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:baReveal 7.5s ease-in-out infinite">
         <div style="position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#fafafa;background:rgba(11,11,12,0.7);backdrop-filter:blur(6px);padding:7px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.15);animation:baRevealInv 7.5s ease-in-out infinite">BEFORE &middot; SCREENSHOT</div>
         <div style="position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#fafafa;background:#C0272D;padding:7px 12px;border-radius:100px;animation:baReveal 7.5s ease-in-out infinite">AFTER &middot; AI RENDER</div>
       </div>
@@ -771,8 +771,8 @@ class Component extends DCLogic {
     const R = (p) => (typeof window !== 'undefined' && window.__resources && window.__resources[p]) || p;
     const mk = (tag, title, base, overlays) => ({ tag, title, base: R(base), node: R(node), overlays: overlays.map(R) });
     return [
-      mk('3D \u2192 RENDER', 'Twin towers', 'uploads/01_BASE.jpg', ['uploads/01.jpg']),
-      mk('3D \u2192 RENDER', 'Steel kitchen', 'uploads/02_BASE.png', ['uploads/02.png']),
+      mk('3D \u2192 RENDER', 'Twin towers', 'assets/01_BASE.jpg', ['assets/01.jpg']),
+      mk('3D \u2192 RENDER', 'Steel kitchen', 'assets/02_BASE.png', ['assets/02.png']),
       mk('SCREENSHOT \u2192 RENDER', 'Forest house', U + '01%20before_result-48b87ae8.webp', [U + '01%20after_result-9f24b9a6.webp']),
       mk('SCREENSHOT \u2192 RENDER', 'Modern villa', U + '02%20before_result-faa5a334.webp', [U + '02%20after_result-61e7b60b.webp']),
       mk('INTERIOR', 'Living room', U + '03-before_result-668e50bd.webp', [U + '03-after_result-2b5a9720.webp']),
