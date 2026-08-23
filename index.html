@@ -107,16 +107,29 @@
     .courses-drop:hover .courses-drop-trigger svg{transform:rotate(180deg)}
     .courses-drop-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%);background:#111113;border:1px solid rgba(255,255,255,0.1);min-width:230px;opacity:0;visibility:hidden;transition:opacity .2s ease,visibility .2s ease;z-index:200;box-shadow:0 16px 40px rgba(0,0,0,0.5)}
     .courses-drop:hover .courses-drop-menu{opacity:1;visibility:visible}
-    .courses-drop-menu a{display:block;padding:14px 18px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9a9a96;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.07);transition:color .2s,background .2s;text-decoration:none}
+    .courses-drop-menu a{display:block;padding:14px 18px 14px 16px;border-left:3px solid transparent;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#9a9a96;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.07);transition:color .2s,background .2s;text-decoration:none}
     .courses-drop-menu a:last-child{border-bottom:none}
-    .courses-drop-menu a:hover{color:#ededec;background:rgba(192,39,45,0.1)}
+    .c-card:hover .c-base{opacity:1}
+    .c-card:hover .c-final{opacity:0}
+    .c-card:hover .c-cta svg{transform:translateX(5px)}
+    .courses-drop-menu a:hover{color:#ededec}
+    .courses-drop-menu a.c-corona{border-left-color:#C0272D}
+    .courses-drop-menu a.c-corona:hover{background:rgba(192,39,45,0.12)}
+    .courses-drop-menu a.c-ai{border-left-color:#D9922B}
+    .courses-drop-menu a.c-ai:hover{background:rgba(217,146,43,0.12)}
+    .courses-drop-menu a.c-en{border-left-color:#3F8FA8}
+    .courses-drop-menu a.c-en:hover{background:rgba(63,143,168,0.14)}
+    .courses-drop-menu a.c-121{border-left-color:#7B6BB5}
+    .courses-drop-menu a.c-121:hover{background:rgba(123,107,181,0.14)}
     .courses-drop-menu a span{display:block;font-size:9.5px;letter-spacing:0.1em;color:#8a8a86;margin-top:3px;text-transform:uppercase}
     @media (max-width:1100px){
       .m-gallery{column-count:3!important}
+      .m-courses{grid-template-columns:repeat(2,1fr)!important}
     }
     @media (max-width:768px){
       .m-hide{display:none!important}
       .m-gallery{column-count:2!important}
+      .m-courses{grid-template-columns:1fr!important}
       .m-stat{grid-template-columns:repeat(2,1fr)!important}
       .m-stat>div:nth-child(2n){border-right:none!important}
       .m-stat>div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,0.07)!important}
@@ -158,13 +171,21 @@
             <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="courses-drop-menu">
-            <a href="https://archstudios-eg.com/courses/corona-on-3ds-max-for-rendering/" target="_blank">
+            <a href="https://archstudios-eg.com/courses/corona-on-3ds-max-for-rendering/" target="_blank" class="c-corona">
               3ds Max + Corona Masterclass
-              <span>Rendering course</span>
+              <span>Rendering course &middot; Arabic</span>
             </a>
-            <a href="https://archstudios-eg.com/courses/ai-for-design-amp-visualization-2-day-crash-course-15th-22nd-august-2026-copy-1/" target="_blank">
+            <a href="https://archstudios-eg.com/courses/ai-for-design-amp-visualization-2-day-crash-course-15th-22nd-august-2026-copy-1/" target="_blank" class="c-ai">
               AI for Visualization
-              <span>2-day crash course</span>
+              <span>2-day crash course &middot; Arabic</span>
+            </a>
+            <a href="https://archibestacademy.net/courses/ai-rendering-workshop-course" target="_blank" class="c-en">
+              AI for Visualization &mdash; English
+              <span>2-day crash course &middot; English</span>
+            </a>
+            <a href="Private 1-1 AI in ArchViz.dc.html" class="c-121">
+              Private 1:1 &mdash; AI in ArchViz
+              <span>One-to-one on Zoom &middot; English / Arabic</span>
             </a>
           </div>
         </div>
@@ -179,15 +200,106 @@
     </div>
   </header>
 
+  <!-- ============ COURSE PICKER ============ -->
+  <section id="courses" style="position:relative;padding:46px 28px 34px">
+    <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 65% 70% at 50% 0%,#000,transparent);mask-image:radial-gradient(ellipse 65% 70% at 50% 0%,#000,transparent);pointer-events:none"></div>
+    <div style="position:relative;max-width:1520px;margin:0 auto">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:26px">
+        <div>
+          <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(192,39,45,0.4);border-radius:100px;padding:7px 14px">
+            <span style="width:6px;height:6px;border-radius:50%;background:#C0272D;animation:pulseDot 2s infinite"></span>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#D96060;text-transform:uppercase">Enrolling now &middot; 4 ways to learn</span>
+          </div>
+          <h2 style="margin-top:16px;font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.0;letter-spacing:-0.025em;color:#fafafa;max-width:16ch">Pick the course that <span style="color:#C0272D">fits you</span>.</h2>
+        </div>
+        <p style="font-size:15px;line-height:1.7;color:#9a9a96;max-width:36ch">Group crash course or private mentoring, Arabic or English &mdash; same pipeline, same workflows, your format. Hover a card to see the raw 3D behind the render.</p>
+      </div>
+      <div class="m-courses" style="display:grid;grid-template-columns:repeat(4,1fr);gap:22px">
+      <a href="https://archstudios-eg.com/courses/ai-for-design-amp-visualization-2-day-crash-course-15th-22nd-august-2026-copy-1/" target="_blank" class="c-card" style="position:relative;display:flex;flex-direction:column;background:#111113;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;text-decoration:none;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-6px);border-color:rgba(217,146,43,0.65);box-shadow:0 26px 54px rgba(0,0,0,0.55)">
+        <span style="position:absolute;top:0;left:0;right:0;height:3px;background:#D9922B;z-index:3"></span>
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#0d0d0f">
+          <img src="assets/hill-render.png" alt="" class="c-final" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .6s ease">
+          <img src="assets/hill-3d.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
+          <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
+          <span style="position:absolute;top:14px;left:14px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;font-size:10.5px;color:#0b0b0c;background:#D9922B;padding:5px 10px;border-radius:100px;font-weight:600">Seats limited</span>
+          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#D9922B">Arabic &middot; Round 06</span>
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
+          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">03 &amp; 10 October. The full AI pipeline, 30+ ready workflows and lifetime updates.</span>
+          <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">Reserve seat
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9922B" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="https://archibestacademy.net/courses/ai-rendering-workshop-course" target="_blank" class="c-card" style="position:relative;display:flex;flex-direction:column;background:#111113;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;text-decoration:none;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-6px);border-color:rgba(63,143,168,0.65);box-shadow:0 26px 54px rgba(0,0,0,0.55)">
+        <span style="position:absolute;top:0;left:0;right:0;height:3px;background:#3F8FA8;z-index:3"></span>
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#0d0d0f">
+          <img src="assets/tower2.jpg" alt="" class="c-final" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .6s ease">
+          <img src="assets/tower2-base.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
+          <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
+          
+          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#3F8FA8">English edition</span>
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
+          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">05 &amp; 06 September. The same crash course, delivered fully in English through Archibest Academy.</span>
+          <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">View course
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F8FA8" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="Private 1-1 AI in ArchViz.dc.html" class="c-card" style="position:relative;display:flex;flex-direction:column;background:#111113;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;text-decoration:none;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-6px);border-color:rgba(123,107,181,0.65);box-shadow:0 26px 54px rgba(0,0,0,0.55)">
+        <span style="position:absolute;top:0;left:0;right:0;height:3px;background:#7B6BB5;z-index:3"></span>
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#0d0d0f">
+          <img src="assets/01.jpg" alt="" class="c-final" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .6s ease">
+          <img src="assets/01_BASE.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
+          <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
+          
+          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#7B6BB5">English / Arabic</span>
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">Private 1:1 Mentoring</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Live on Zoom &middot; your pace</span>
+          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">Built around your own projects and pipeline &mdash; for professionals who need repeatable results.</span>
+          <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">See the program
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7B6BB5" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      <a href="https://archstudios-eg.com/courses/corona-on-3ds-max-for-rendering/" target="_blank" class="c-card" style="position:relative;display:flex;flex-direction:column;background:#111113;border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden;text-decoration:none;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease" style-hover="transform:translateY(-6px);border-color:rgba(192,39,45,0.65);box-shadow:0 26px 54px rgba(0,0,0,0.55)">
+        <span style="position:absolute;top:0;left:0;right:0;height:3px;background:#C0272D;z-index:3"></span>
+        <div style="position:relative;aspect-ratio:4/5;overflow:hidden;background:#0d0d0f">
+          <img src="assets/corona-cover.jpg" alt="" class="c-final" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .6s ease">
+          <img src="assets/corona-cover.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
+          <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
+          
+          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C0272D">Arabic</span>
+        </div>
+        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">3ds Max + Corona</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Rendering masterclass</span>
+          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">The rendering foundation &mdash; lighting, materials and camera work with Corona.</span>
+          <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">View course
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </span>
+        </div>
+      </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ HERO ============ -->
-  <section style="position:relative;max-width:1200px;margin:0 auto;padding:110px 32px 90px">
+  <section style="position:relative;max-width:1200px;margin:0 auto;padding:70px 32px 90px">
     <!-- faint grid -->
     <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.035) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 70% 60% at 30% 35%,#000,transparent);mask-image:radial-gradient(ellipse 70% 60% at 30% 35%,#000,transparent);pointer-events:none"></div>
 
     <div style="position:relative">
       <div style="display:inline-flex;align-items:center;gap:10px;background:#C0272D;padding:9px 16px;border-radius:100px;margin-bottom:34px;box-shadow:0 0 0 6px rgba(192,39,45,0.14);animation:pulseGlow 2.4s infinite">
         <span style="width:6px;height:6px;border-radius:50%;background:#fff;animation:pulseDot 2s infinite"></span>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;color:#fff;text-transform:uppercase;font-weight:600">Next round &middot; 15 &amp; 22 August 2026 &middot; Enrolling now</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.18em;color:#fff;text-transform:uppercase;font-weight:600">Round 06 &middot; 03 &amp; 10 October 2026 &middot; Enrolling now</span>
       </div>
 
       <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:clamp(44px,6.4vw,88px);line-height:0.98;letter-spacing:-0.025em;color:#fafafa;max-width:16ch">
@@ -202,18 +314,38 @@
       <div data-reveal class="m-round" style="margin-top:40px;display:flex;align-items:stretch;gap:0;border:1px solid rgba(192,39,45,0.4);border-radius:12px;overflow:hidden;max-width:640px;background:linear-gradient(120deg,rgba(192,39,45,0.10),rgba(192,39,45,0.02))">
         <div class="m-round-dates" style="display:flex;flex:1">
           <div style="flex:1;padding:22px 26px;border-right:1px solid rgba(192,39,45,0.28)">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D96060;text-transform:uppercase">Session 01</div>
-            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Aug 15</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D96060;text-transform:uppercase">Arabic &middot; Session 01</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Oct 03</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#9a9a96;margin-top:6px">Sat &middot; 5&ndash;8 PM</div>
           </div>
           <div style="flex:1;padding:22px 26px;border-right:1px solid rgba(192,39,45,0.28)">
-            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D96060;text-transform:uppercase">Session 02</div>
-            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Aug 22</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#D96060;text-transform:uppercase">Arabic &middot; Session 02</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Oct 10</div>
             <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#9a9a96;margin-top:6px">Sat &middot; 5&ndash;8 PM</div>
           </div>
         </div>
         <a href="https://archstudios-eg.com/courses/ai-for-design-amp-visualization-2-day-crash-course-15th-22nd-august-2026-copy-1/" target="_blank" class="m-round-cta" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:22px 30px;background:#C0272D;color:#fff;text-align:center;transition:background .2s ease" style-hover="background:#a51f25">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;opacity:.85">Seats limited</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.02em;white-space:nowrap">Reserve Seat</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+
+      <div data-reveal class="m-round" style="margin-top:14px;display:flex;align-items:stretch;gap:0;border:1px solid rgba(63,143,168,0.4);border-radius:12px;overflow:hidden;max-width:640px;background:linear-gradient(120deg,rgba(63,143,168,0.10),rgba(63,143,168,0.02))">
+        <div class="m-round-dates" style="display:flex;flex:1">
+          <div style="flex:1;padding:22px 26px;border-right:1px solid rgba(63,143,168,0.28)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#5FB2CB;text-transform:uppercase">English &middot; Session 01</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Sep 05</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#9a9a96;margin-top:6px">Sat &middot; 7&ndash;10 PM KSA</div>
+          </div>
+          <div style="flex:1;padding:22px 26px;border-right:1px solid rgba(63,143,168,0.28)">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#5FB2CB;text-transform:uppercase">English &middot; Session 02</div>
+            <div style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1;color:#fafafa;margin-top:8px">Sep 06</div>
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.08em;color:#9a9a96;margin-top:6px">Sun &middot; 7&ndash;10 PM KSA</div>
+          </div>
+        </div>
+        <a href="https://archibestacademy.net/courses/ai-rendering-workshop-course" target="_blank" class="m-round-cta" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:22px 30px;background:#3F8FA8;color:#fff;text-align:center;transition:background .2s ease" style-hover="background:#337790">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;opacity:.85">In English</span>
           <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.02em;white-space:nowrap">Reserve Seat</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
@@ -286,8 +418,8 @@
       </div>
 
       <div data-reveal style="position:relative;width:100%;max-width:480px;margin:0 auto;aspect-ratio:4/5;border:1px solid rgba(255,255,255,0.12);border-radius:8px;overflow:hidden;background:#111;box-shadow:0 24px 60px rgba(0,0,0,0.5)">
-        <img src="assets/01_BASE.jpg" alt="3D viewport screenshot, before" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
-        <img src="assets/01.jpg" alt="AI render, after" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:baReveal 7.5s ease-in-out infinite">
+        <img src="assets/hill-3d.jpg" alt="3D viewport screenshot, before" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block">
+        <img src="assets/hill-render.png" alt="AI render, after" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;animation:baReveal 7.5s ease-in-out infinite">
         <div style="position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#fafafa;background:rgba(11,11,12,0.7);backdrop-filter:blur(6px);padding:7px 12px;border-radius:100px;border:1px solid rgba(255,255,255,0.15);animation:baRevealInv 7.5s ease-in-out infinite">BEFORE &middot; SCREENSHOT</div>
         <div style="position:absolute;top:16px;left:16px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#fafafa;background:#C0272D;padding:7px 12px;border-radius:100px;animation:baReveal 7.5s ease-in-out infinite">AFTER &middot; AI RENDER</div>
       </div>
@@ -490,16 +622,20 @@
         See the tasks in motion.
       </h2>
       <p style="margin-top:20px;font-size:17px;line-height:1.65;color:#b6b6b1;max-width:54ch">
-        Every example fades from the base 3D render through real results &mdash; drop your image into the workflow, run it, and watch the task happen with the scene fully under control.
+        Every example shows the finished result &mdash; hover any image to fall back to the raw base 3D it started from. Drop your image into the workflow, run it, and watch the task happen with the scene fully under control.
       </p>
+      <div style="margin-top:22px;display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:8px 15px">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D96060" stroke-width="1.7"><path d="M12 5v14M5 12h14"/></svg>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#b6b6b1;text-transform:uppercase">Hover to see the base 3D</span>
+      </div>
 
       <div class="m-gallery" style="margin-top:50px;column-count:4;column-gap:22px">
         <sc-for list="{{ shots }}" as="shot" hint-placeholder-count="12">
           <div data-reveal style="break-inside:avoid;margin-bottom:22px">
             <div data-slideshow style="position:relative;border:1px solid rgba(255,255,255,0.12);border-radius:10px;overflow:hidden;background:#111;box-shadow:0 16px 40px rgba(0,0,0,0.45)">
-              <img src="{{ shot.base }}" alt="" style="position:relative;display:block;width:100%;height:auto;opacity:1;transition:opacity .6s ease">
+              <img src="{{ shot.base }}" alt="" style="position:relative;display:block;width:100%;height:auto;opacity:0;transition:opacity .45s ease">
               <sc-for list="{{ shot.overlays }}" as="ov" hint-placeholder-count="2">
-                <img src="{{ ov }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s ease">
+                <img src="{{ ov }}" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
               </sc-for>
             </div>
             <div style="margin-top:14px">
@@ -650,7 +786,7 @@
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#C0272D">SESSION 01</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a86">3 HOURS &middot; LIVE</span>
         </div>
-        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;line-height:1;color:#fafafa">August 15</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;line-height:1;color:#fafafa">October 03</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#8a8a86;margin-top:8px">2026 &middot; 5:00&ndash;8:00 PM</div>
         <p style="margin-top:24px;font-size:15px;line-height:1.6;color:#a8a8a3">Fundamentals &mdash; the best workflow to start, viewport screenshot to render, building the automated pipeline, exploring the tools, and the core of predictable editing.</p>
       </div>
@@ -659,11 +795,23 @@
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#C0272D">SESSION 02</span>
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#8a8a86">3 HOURS &middot; LIVE</span>
         </div>
-        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;line-height:1;color:#fafafa">August 22</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:32px;line-height:1;color:#fafafa">October 10</div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;color:#8a8a86;margin-top:8px">2026 &middot; 5:00&ndash;8:00 PM</div>
         <p style="margin-top:24px;font-size:15px;line-height:1.6;color:#a8a8a3">Advanced tasks &mdash; 2D technical drawings, material &amp; lighting changes, object replacement, animation, and upscaling.</p>
       </div>
     </div>
+
+    <a href="Private 1-1 AI in ArchViz.dc.html" data-reveal class="m-kling" style="margin-top:20px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.012);padding:32px 38px;transition:border-color .25s ease,background .25s ease" style-hover="border-color:rgba(192,39,45,0.5);background:rgba(192,39,45,0.04)">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.16em;color:#D96060;text-transform:uppercase;margin-bottom:12px">Prefer one-to-one?</div>
+        <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:clamp(20px,2.4vw,26px);line-height:1.15;color:#fafafa">The same material as private 1:1 mentoring</div>
+        <p style="margin-top:12px;font-size:15px;line-height:1.6;color:#a8a8a3;max-width:60ch">Two live sessions on Zoom, worked on your own renders, with the workflow library included &mdash; if you'd rather learn privately than in the group.</p>
+      </div>
+      <span style="display:inline-flex;align-items:center;gap:11px;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.06em;font-weight:600;color:#fafafa">
+        See private sessions
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </span>
+    </a>
   </section>
 
   <!-- ============ FAQ ============ -->
@@ -705,7 +853,7 @@
           Register Now
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#8a8a86">15 &amp; 22 August 2026 &middot; 5&ndash;8 PM</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.06em;color:#8a8a86">03 &amp; 10 October 2026 &middot; 5&ndash;8 PM</span>
       </div>
     </div>
   </section>
@@ -771,6 +919,8 @@ class Component extends DCLogic {
     const R = (p) => (typeof window !== 'undefined' && window.__resources && window.__resources[p]) || p;
     const mk = (tag, title, base, overlays) => ({ tag, title, base: R(base), node: R(node), overlays: overlays.map(R) });
     return [
+      mk('3D \u2192 RENDER', 'Hillside residence', 'assets/hill-3d.jpg', ['assets/hill-render.png']),
+      mk('3D \u2192 RENDER', 'Waterfront tower', 'assets/tower2-base.jpg', ['assets/tower2.jpg']),
       mk('3D \u2192 RENDER', 'Twin towers', 'assets/01_BASE.jpg', ['assets/01.jpg']),
       mk('3D \u2192 RENDER', 'Steel kitchen', 'assets/02_BASE.png', ['assets/02.png']),
       mk('SCREENSHOT \u2192 RENDER', 'Forest house', U + '01%20before_result-48b87ae8.webp', [U + '01%20after_result-9f24b9a6.webp']),
@@ -819,7 +969,7 @@ class Component extends DCLogic {
     const tick = (now) => {
       const t = Math.min(1, (now - start) / dur);
       const ease = 1 - Math.pow(1 - t, 3);
-      this.setState({ rounds: Math.round(ease * 4), students: Math.round(ease * 200) });
+      this.setState({ rounds: Math.round(ease * 5), students: Math.round(ease * 200) });
       if (t < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
@@ -862,12 +1012,19 @@ class Component extends DCLogic {
     shows.forEach((show, si) => {
       const imgs = Array.prototype.slice.call(show.querySelectorAll('img'));
       if (imgs.length < 2) return;
-      let idx = 0;
-      setInterval(() => {
-        imgs[idx].style.opacity = '0';
-        idx = (idx + 1) % imgs.length;
-        imgs[idx].style.opacity = '1';
-      }, 1700 + si * 130);
+      const base = imgs[0];
+      const results = imgs.slice(1);
+      let idx = 0, hover = false;
+      const paint = () => {
+        base.style.opacity = hover ? '1' : '0';
+        results.forEach((im, i) => { im.style.opacity = (!hover && i === idx) ? '1' : '0'; });
+      };
+      paint();
+      if (results.length > 1) {
+        setInterval(() => { if (!hover) { idx = (idx + 1) % results.length; paint(); } }, 1900 + si * 130);
+      }
+      show.addEventListener('mouseenter', () => { hover = true; paint(); });
+      show.addEventListener('mouseleave', () => { hover = false; paint(); });
     });
 
     setInterval(() => {
