@@ -133,13 +133,10 @@
       .c-card{border-radius:8px!important;transform:none!important;box-shadow:none!important}
       .c-card:hover .c-base,.c-card:active .c-base{opacity:0!important}
       .c-card:hover .c-final,.c-card:active .c-final{opacity:1!important}
-      .c-card>span:first-child{height:2px!important}
-      .c-card>div:last-child{padding:8px 7px 10px!important}
-      .c-card>div:last-child>span:first-child{font-size:12px!important;line-height:1.15!important;letter-spacing:-0.01em!important}
-      .c-card>div:last-child>span:nth-child(2),.c-card>div:last-child>span:nth-child(3),.c-card .c-cta{display:none!important}
-      .c-card>div:first-of-type>span:not([style*="inset:0"]){font-size:7.5px!important;letter-spacing:0.05em!important}
-      .c-card>div:first-of-type>span[style*="border-radius:100px"]{display:none!important}
-      .c-card>div:first-of-type>span[style*="bottom:14px"]{bottom:7px!important;left:7px!important;right:7px!important}
+      .c-body{padding:7px 6px 9px!important}
+      .c-title{font-size:11px!important;line-height:1.2!important;letter-spacing:-0.01em!important;word-break:break-word!important}
+      .c-meta,.c-desc,.c-cta,.c-pill{display:none!important}
+      .c-tag{font-size:7px!important;letter-spacing:0.04em!important;bottom:6px!important;left:6px!important;right:6px!important;line-height:1.3!important}
       .m-stat{grid-template-columns:repeat(2,1fr)!important}
       .m-stat>div:nth-child(2n){border-right:none!important}
       .m-stat>div:nth-child(-n+2){border-bottom:1px solid rgba(255,255,255,0.07)!important}
@@ -231,13 +228,13 @@
           <img src="assets/hill-render.png" alt="" class="c-final" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .45s ease,transform .6s ease">
           <img src="assets/hill-3d.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
           <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
-          <span style="position:absolute;top:14px;left:14px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;font-size:10.5px;color:#0b0b0c;background:#D9922B;padding:5px 10px;border-radius:100px;font-weight:600">Seats limited</span>
-          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#D9922B">Arabic &middot; Round 06</span>
+          <span class="c-pill" style="position:absolute;top:14px;left:14px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;font-size:10.5px;color:#0b0b0c;background:#D9922B;padding:5px 10px;border-radius:100px;font-weight:600">Seats limited</span>
+          <span class="c-tag" style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#D9922B">Arabic &middot; Round 06</span>
         </div>
-        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
-          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">03 &amp; 10 October. The full AI pipeline, 30+ ready workflows and lifetime updates.</span>
+        <div class="c-body" style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span class="c-title" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
+          <span class="c-meta" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
+          <span class="c-desc" style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">03 &amp; 10 October. The full AI pipeline, 30+ ready workflows and lifetime updates.</span>
           <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">Reserve seat
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D9922B" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -250,12 +247,12 @@
           <img src="assets/tower2-base.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
           <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
           
-          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#3F8FA8">English edition</span>
+          <span class="c-tag" style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#3F8FA8">English edition</span>
         </div>
-        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
-          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">05 &amp; 06 September. The same crash course, delivered fully in English through Archibest Academy.</span>
+        <div class="c-body" style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span class="c-title" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">AI for Visualization</span>
+          <span class="c-meta" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">2 live sessions &middot; 6 hours</span>
+          <span class="c-desc" style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">05 &amp; 06 September. The same crash course, delivered fully in English through Archibest Academy.</span>
           <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">View course
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3F8FA8" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -268,12 +265,12 @@
           <img src="assets/01_BASE.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
           <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
           
-          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#7B6BB5">English / Arabic</span>
+          <span class="c-tag" style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#7B6BB5">English / Arabic</span>
         </div>
-        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">Private 1:1 Mentoring</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Live on Zoom &middot; your pace</span>
-          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">Built around your own projects and pipeline &mdash; for professionals who need repeatable results.</span>
+        <div class="c-body" style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span class="c-title" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">Private 1:1 Mentoring</span>
+          <span class="c-meta" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Live on Zoom &middot; your pace</span>
+          <span class="c-desc" style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">Built around your own projects and pipeline &mdash; for professionals who need repeatable results.</span>
           <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">See the program
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7B6BB5" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
@@ -286,12 +283,12 @@
           <img src="assets/corona-cover.jpg" alt="" class="c-base" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .45s ease">
           <span style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,11,12,0.95) 8%,rgba(11,11,12,0.15) 55%,transparent);z-index:2"></span>
           
-          <span style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C0272D">Arabic</span>
+          <span class="c-tag" style="position:absolute;bottom:14px;left:16px;right:16px;z-index:3;font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:0.16em;text-transform:uppercase;color:#C0272D">Arabic</span>
         </div>
-        <div style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">3ds Max + Corona</span>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Rendering masterclass</span>
-          <span style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">The rendering foundation &mdash; lighting, materials and camera work with Corona.</span>
+        <div class="c-body" style="display:flex;flex-direction:column;flex:1;padding:24px 26px 26px">
+          <span class="c-title" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:26px;line-height:1.15;letter-spacing:-0.02em;color:#fafafa">3ds Max + Corona</span>
+          <span class="c-meta" style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:#8a8a86;margin-top:9px">Rendering masterclass</span>
+          <span class="c-desc" style="font-size:15px;line-height:1.6;color:#b6b6b1;margin-top:14px;flex:1">The rendering foundation &mdash; lighting, materials and camera work with Corona.</span>
           <span class="c-cta" style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.09);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:#fafafa">View course
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C0272D" stroke-width="2" style="transition:transform .25s ease"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           </span>
