@@ -112,10 +112,9 @@
     .c-card:hover .c-base{opacity:1}
     .ang:hover .ang-b,.ang:active .ang-b{opacity:1!important}
     .ang{cursor:pointer}
-    @keyframes stMarquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .st-track{animation:stMarquee 70s linear infinite}
-    .st-strip:hover .st-track{animation-play-state:paused}
-    @media (prefers-reduced-motion:reduce){.st-track{animation-duration:200s}}
+    .st-strip{scrollbar-width:none;cursor:grab;user-select:none;-webkit-user-select:none;overscroll-behavior-x:contain}
+    .st-strip::-webkit-scrollbar{display:none}
+    .st-strip img{-webkit-user-drag:none;pointer-events:none}
     .c-card:hover .c-final{opacity:0}
     .c-card:hover .c-cta svg{transform:translateX(5px)}
     .courses-drop-menu a:hover{color:#ededec}
@@ -322,11 +321,11 @@
         </div>
         <div style="display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,0.15);border-radius:100px;padding:8px 15px">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D96060" stroke-width="1.7"><path d="M12 5v14M5 12h14"/></svg>
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#b6b6b1;text-transform:uppercase">Hover to see the base 3D</span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.14em;color:#b6b6b1;text-transform:uppercase">Hover for base 3D &middot; drag to browse</span>
         </div>
       </div>
     </div>
-    <div class="st-strip" style="margin-top:44px;overflow:hidden;padding-bottom:10px;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
+    <div class="st-strip" style="margin-top:44px;overflow-x:auto;overflow-y:hidden;padding-bottom:10px;-webkit-mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(to right,transparent,#000 6%,#000 94%,transparent)">
       <div class="st-track" style="display:flex;width:max-content">
         <figure class="st-c" style="flex:0 0 auto;margin:0 14px 0 0;display:flex;flex-direction:column;gap:12px">
           <div class="ang st-i" style="position:relative;height:440px;aspect-ratio:1.0000;border:1px solid rgba(255,255,255,0.12);border-radius:10px;overflow:hidden;background:#111;box-shadow:0 16px 40px rgba(0,0,0,0.45)">
@@ -1209,7 +1208,34 @@ class Component extends DCLogic {
     ];
   })();
 
+  initStrip() {
+    const root = this.base || document;
+    const el = root.querySelector('.st-strip'); if (!el || el._st) return; el._st = true;
+    const track = el.querySelector('.st-track');
+    const speed = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0.12 : 0.5;
+    let pos = 1, hover = false, drag = null, idleUntil = 0;
+    const half = () => track.scrollWidth / 2;
+    const wrap = () => { const h = half(); if (h <= 0) return; if (pos >= h) pos -= h; else if (pos < 1) pos += h; };
+    el.addEventListener('mouseenter', () => hover = true);
+    el.addEventListener('mouseleave', () => { hover = false; if (drag) end(); });
+    el.addEventListener('scroll', () => { if (Math.abs(el.scrollLeft - pos) > 2) { pos = el.scrollLeft; idleUntil = performance.now() + 1500; wrap(); if (Math.round(pos) !== el.scrollLeft) el.scrollLeft = pos; } }, { passive: true });
+    el.addEventListener('touchstart', () => idleUntil = performance.now() + 1e9, { passive: true });
+    el.addEventListener('touchend', () => idleUntil = performance.now() + 1500, { passive: true });
+    el.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; drag = { x: e.clientX, p: pos, moved: false }; el.style.cursor = 'grabbing'; });
+    window.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 3) drag.moved = true; pos = drag.p - dx; wrap(); if (pos !== drag.p - dx) { drag.p = pos; drag.x = e.clientX; } el.scrollLeft = pos; });
+    const end = () => { if (!drag) return; drag = null; el.style.cursor = 'grab'; idleUntil = performance.now() + 1200; };
+    window.addEventListener('pointerup', end);
+    el.addEventListener('click', e => { if (drag && drag.moved) e.preventDefault(); }, true);
+    el.addEventListener('dragstart', e => e.preventDefault());
+    const tick = () => {
+      if (!hover && !drag && performance.now() > idleUntil) { pos += speed; wrap(); el.scrollLeft = pos; }
+      this._stRaf = requestAnimationFrame(tick);
+    };
+    el.scrollLeft = pos; this._stRaf = requestAnimationFrame(tick);
+  }
+
   componentDidMount() {
+    this.initStrip();
     if (typeof IntersectionObserver === 'undefined') return;
     const els = this.base ? this.base.querySelectorAll('[data-reveal]') : document.querySelectorAll('[data-reveal]');
     els.forEach(el => {
